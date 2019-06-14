@@ -6,6 +6,10 @@
   * The last parameter accepts a callback 
   * In the body of the function return the callback with the two parameters that you created
 */
+function basicCallback(x, y, cb) {
+  // basicCallback passes the parameters back to the callback.
+  return cb(x, y)
+}
 
 
 /* Step 2: Create several functions to callback with consume();
@@ -15,17 +19,32 @@
 */
 
 
+function add(x, y) {
+  console.log(x + y)
+}
+function multiply(x, y) {
+  console.log(x * y)
+}
+function greeting(firstname, lastname) {
+  console.log(`Hello ${firstname} ${lastname}, nice to meet you`)
+}
+
+
+function consume(param1, param2, cb) {
+  return cb(param1, param2)
+}
+
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// consume(2,2,add); // 4
-// consume(10,16,multiply); // 160
-// consume("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
+consume(2, 2, add); // 4
+consume(10, 16, multiply); // 160
+consume("Mary", "Poppins", greeting); // Hello Mary Poppins, nice to meet you!
 
 
 // ==== Closures ==== 
 
 // Explain in your own words why `nestedfunction()` can access the variable `internal`.
 
-// Explanation: 
+// Explanation: They both are in the same scope which is the myFunction() Scope. Thus it is able to access 
 
 
 const external = "I'm outside the function";
